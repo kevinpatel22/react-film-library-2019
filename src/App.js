@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import FilmListing from './FilmListing';
+import FilmDetails from './FilmDetails';
+import TMDB from './TMDB';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const App = () => {
+  const initialFilms = TMDB.films;
+  const [films, setFilms] = useState(initialFilms);
+  const [faves, setFaves] = useState([]);
+
+  const onFaveClick = (film) => {
+    let favesCp = faves.slice();
+    let faveIn = faves.indexOf(film);
+
+    if (faves.includes(film)) {
+      favesCp.splice(faveIn, 1);
+      setFaves(favesCp);
+    } else {
+      setFaves([...favesCp, film]);
+    }
   }
+
+  return(
+    <div className = "film-library" >
+      <FilmListing films={films} onFaveClick={onFaveClick} />
+      <FilmDetails films={films} />
+    </div>
+=======
+import React from 'react';
+
+const App = () => {
+  return (
+    <main className="film-library">
+      APP GOES HERE
+    </main>
+>>>>>>> 9d0cb087185f52c92db95ef41afce0be4f4186ea
+  );
 }
 
 export default App;

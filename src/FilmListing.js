@@ -12,8 +12,7 @@ const FilmListing = ({ films, onFaveToggle }) => {
   };
 
   const filmRows = films.map((film, i) =>
-    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} handleDetailsClick={handleDetailsClick} />
-  );
+    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} handleDetailsClick={handleDetailsClick} />);
 
   const handleDetailsClick = (film) => {
     console.log(`Fetching details for ${film.title}`);

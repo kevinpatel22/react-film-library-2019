@@ -8,4 +8,4 @@ const FilmDetails = () => {
   );
 };
 
-  export default FilmDetails;
+export default FilmDetails;

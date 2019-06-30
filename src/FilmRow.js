@@ -15,6 +15,6 @@ const FilmRow = ({ film, onFaveToggle, handleDetailsClick }) => {
       <Fave onFaveToggle={() => onFaveToggle(film)} />
     </div>
   );
-}
+};
 
 export default FilmRow;

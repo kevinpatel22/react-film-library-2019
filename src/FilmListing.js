@@ -3,7 +3,7 @@ import FilmRow from './FilmRow';
 
 const FilmListing = ({ films, onFaveToggle }) => {
   const [filter, setFilter] = useState('all');
-  const allFilrRef = useRef();
+  const allFilRef = useRef();
   const favesFilRef = useRef();
 
   const handleFilterClick = (e, selectFilter) => {
@@ -25,7 +25,7 @@ const FilmListing = ({ films, onFaveToggle }) => {
       <h1 className="section-title">FILMS</h1>
 
       <div className="film-list-filters">
-        <div ref={allFilrRef} className={`film-list-filter${(filter === 'all') ? ' is-active' : ''}`} onClick={(e) => handleFilterClick(e, 'all')}>
+        <div ref={allFilRef} className={`film-list-filter${(filter === 'all') ? ' is-active' : ''}`} onClick={(e) => handleFilterClick(e, 'all')}>
           ALL
           <span className="section-count">{films.length}</span>
         </div>

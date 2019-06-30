@@ -8,7 +8,7 @@ const App = () => {
   const [films, setFilms] = useState(initialFilms);
   const [faves, setFaves] = useState([]);
 
-  const onFaveToggle = (film) => {
+  const onFaveClick = (film) => {
     let favesCp = faves.slice();
     let faveIn = faves.indexOf(film);
 
@@ -22,7 +22,7 @@ const App = () => {
 
   return(
     <div className = "film-library" >
-      <FilmListing films={films} onFaveToggle={onFaveToggle} />
+      <FilmListing films={films} onFaveClick={onFaveClick} />
       <FilmDetails films={films} />
     </div>
   );

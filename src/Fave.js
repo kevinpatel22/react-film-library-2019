@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
 
-const Fave = ({ onFaveToggle }) => {
+import React from 'react';
+
+const Faves = ({ onFavClick }) => {
+
   const handleClick = (e) => {
-    onFaveToggle();
+    e.stopPropagation();
+    onFavClick();
   };
 
   return (
-    <div className="film-row-fave add_to_queue">
-      <i className="material-icons" onClick={handleClick}>+</i>
+    <div className='film-row-fave add_to_queue' >
+      <p className="material-icons" onClick={handleClick} > + </p>
     </div>
   );
 };
 
-export default Fave;
+export default Faves;

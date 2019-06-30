@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import FilmListing from './FilmListing';
 import FilmDetails from './FilmDetails';
@@ -25,6 +26,15 @@ const App = () => {
       <FilmListing films={films} onFaveClick={onFaveClick} />
       <FilmDetails films={films} />
     </div>
+=======
+import React from 'react';
+
+const App = () => {
+  return (
+    <main className="film-library">
+      APP GOES HERE
+    </main>
+>>>>>>> 9d0cb087185f52c92db95ef41afce0be4f4186ea
   );
 }
 

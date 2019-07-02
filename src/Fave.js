@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Faves = ({ onFavClick }) => {
 
@@ -6,10 +6,14 @@ const Faves = ({ onFavClick }) => {
     e.stopPropagation();
     onFavClick();
   };
+
+  const [isFave, setIsFave] = useState(false);
+  const faveClass = isFave ? 'remove_from_queue' : 'add_to_queue';
+
   return (
-    <div className='film-row-fave add_to_queue' >
-      <p className="material-icons" onClick={handleClick} > + </p>
-    </div>
+    <button className={`film-row-fave ${faveClass}`} onClick={handleClick}>
+      <i className="material-icons">+</i>
+    </button>
   );
 };
 

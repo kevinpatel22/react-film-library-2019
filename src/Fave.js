@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
-=======
 import React from 'react';
->>>>>>> master
+import React, { useState } from 'react';
+
 
 const Faves = ({ onFavClick }) => {
 
@@ -24,7 +23,6 @@ const Faves = ({ onFavClick }) => {
 
   const [isFave, setIsFave] = useState(false);
   const faveClass = isFave ? 'remove_from_queue' : 'add_to_queue';
-
 
   return (
     <button className={`film-row-fave ${faveClass}`} >

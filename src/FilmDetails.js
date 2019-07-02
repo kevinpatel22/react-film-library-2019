@@ -42,4 +42,8 @@ const FilmDetails = ({ film }) => {
   );
 };
 
+<<<<<<< HEAD
 export default FilmDetails;
+=======
+export default FilmDetails;
+>>>>>>> master

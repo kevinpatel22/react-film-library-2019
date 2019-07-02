@@ -23,6 +23,6 @@ const FilmRow = ({ film, onFaveToggle, handleFilmDetails }) => {
       <Fave onFavClick={() => handleClick(film)} />
     </article>
   );
-}
+};
 
 export default FilmRow;

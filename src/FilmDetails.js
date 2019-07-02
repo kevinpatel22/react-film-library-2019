@@ -42,4 +42,6 @@ const FilmDetails = ({ film }) => {
   );
 };
 
+
 export default FilmDetails;
+

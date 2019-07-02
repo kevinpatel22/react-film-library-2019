@@ -1,39 +1,38 @@
 import React, { useState, useRef } from 'react';
+import TMDB from './TMDB';
 import FilmRow from './FilmRow';
 
-const FilmListing = ({ films, onFaveToggle }) => {
+const FilmListing = ({ faves, onFaveToggle, handleFilmDetails }) => {
   const [filter, setFilter] = useState('all');
   const allFilRef = useRef();
   const favesFilRef = useRef();
 
-  const handleFilterClick = (e, selectFilter) => {
-    e.stopPropagation();
+  const handleFilterToggle = (selectFilter) => {
+    console.log(selectFilter)
     setFilter(selectFilter);
+    console.log(`setting filter to ${ filter }`);
   };
 
-  const filmRows = films.map((film, i) =>
-    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} handleDetailsClick={handleDetailsClick} />
+  const allFilms = TMDB.films;
+  const films = filter === 'faves' ? faves : allFilms;
+  const filmRows = films.map((film) => 
+    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} faves={faves} handleFilmDetails={handleFilmDetails} />
   );
-
-  const handleDetailsClick = (film) => {
-    console.log(`Fetching details for ${film.title}`);
-  };
-
 
   return (
     <div className="film-list">
       <h1 className="section-title">FILMS</h1>
 
-      <div className="film-list-filters">
-        <div ref={allFilRef} className={`film-list-filter${(filter === 'all') ? ' is-active' : ''}`} onClick={(e) => handleFilterClick(e, 'all')}>
+      <nav className="film-list-filters">
+        <button ref={allFilRef} className="film-list-filter" onClick={() => { handleFilterToggle('all') }}>
           ALL
-          <span className="section-count">{films.length}</span>
-        </div>
-        <div ref={favesFilRef} className={`film-list-filter${(filter === 'faves') ? ' is-active' : ''}`} onClick={(e) => handleFilterClick(e, 'faves')}>
+          <span className="section-count">{allFilms.length}</span>
+        </button>
+        <button ref={favesFilRef} className="film-list-filter" onClick={() => { handleFilterToggle('faves') }}>
           FAVES
-          <span className="section-count">0</span>
-        </div>
-      </div>
+          <span className="section-count">{faves.length}</span>
+        </button>
+      </nav>
       {filmRows}
     </div>
   );

@@ -2,30 +2,41 @@ import React, { useState } from 'react';
 import FilmListing from './FilmListing';
 import FilmDetails from './FilmDetails';
 import TMDB from './TMDB';
+import axios from 'axios';
+
 
 const App = () => {
-  const initialFilms = TMDB.films;
-  const [films, setFilms] = useState(initialFilms);
+  const [currentFilm, setCurrentFilm] = useState({});
   const [faves, setFaves] = useState([]);
 
-  const onFaveClick = (film) => {
-    let favesCp = faves.slice();
+  const handleFaveToggle = (film) => {
     let faveIn = faves.indexOf(film);
-
     if (faves.includes(film)) {
-      favesCp.splice(faveIn, 1);
-      setFaves(favesCp);
+      faves.splice(faveIn, 1);
+      setFaves([...faves]);
     } else {
-      setFaves([...favesCp, film]);
+      setFaves([...faves, film]);
     };
   };
 
-  return(
-    <div className = "film-library" >
-      <FilmListing films={films} onFaveClick={onFaveClick} />
-      <FilmDetails films={films} />
-    </div>
+  const handleDetailsClick = (film) => {
+    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB.api_key}&append_to_response=videos,images&language=en`;
+    axios.get(url)
+      .then((response) => {
+        setCurrentFilm(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+
+  return(
+    <div className = "film-library">
+      {/* <FaveContext.Provider value={{ faves: faves, toggleFave: handleFaveToggle, faves: faves }} /> */}
+      <FilmListing onFaveToggle={handleFaveToggle} handleFilmDetails={handleDetailsClick} faves={faves} />
+      <FilmDetails film={currentFilm} />
+    </div>
   );
 };
 

@@ -13,22 +13,12 @@ const FilmListing = ({ faves, onFaveToggle, handleFilmDetails }) => {
     console.log(`setting filter to ${ filter }`);
   };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
+
   const allFilms = TMDB.films;
   const films = filter === 'faves' ? faves : allFilms;
   const filmRows = films.map((film) => 
     <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} faves={faves} handleFilmDetails={handleFilmDetails} />
   );
-<<<<<<< HEAD
-=======
-  const filmRows = films.map((film, i) =>
-    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} handleDetailsClick={handleDetailsClick} />);
->>>>>>> master
-=======
->>>>>>> master
 
   return (
     <div className="film-list">

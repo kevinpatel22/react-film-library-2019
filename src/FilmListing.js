@@ -8,9 +8,7 @@ const FilmListing = ({ faves, onFaveToggle, handleFilmDetails }) => {
   const favesFilRef = useRef();
 
   const handleFilterToggle = (selectFilter) => {
-    console.log(selectFilter)
     setFilter(selectFilter);
-    console.log(`setting filter to ${ filter }`);
   };
 
   const allFilms = TMDB.films;

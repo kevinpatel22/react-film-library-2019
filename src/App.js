@@ -20,7 +20,7 @@ const App = () => {
   };
 
   const handleDetailsClick = (film) => {
-    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB.api_key}&append_to_response=videos,images&language=en`;
+    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;;
     axios.get(url)
     .then((response) => {
       setCurrentFilm(response.data);

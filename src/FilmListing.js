@@ -17,10 +17,6 @@ const FilmListing = ({ faves, onFaveToggle, handleFilmDetails }) => {
     <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} faves={faves} handleFilmDetails={handleFilmDetails} />
   );
 
-  const filmRows = films.map((film, i) =>
-    <FilmRow key={film.id} film={film} onFaveToggle={onFaveToggle} handleDetailsClick={handleDetailsClick} />);
-
-
   return (
     <div className="film-list">
       <h1 className="section-title">FILMS</h1>
